@@ -1,0 +1,33 @@
+/* Overwriting sakura.css' link hover effect */
+
+a {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: #c9c9c9;
+    pointer-events: none;
+
+    opacity: 0;
+  }
+
+  &:hover {
+    border-bottom: unset !important;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+/* Done overwriting */
+
+nav {
+  display: flex;
+  gap: 1em;
+}
