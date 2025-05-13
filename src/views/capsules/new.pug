@@ -3,7 +3,7 @@ extends ../layouts/global.pug
 block content
   h1 Nowa kapsuła 🔮
 
-  form(action="/capsules", method="post", enctype="multipart/form-data")
+  form(action=baseUrl + "/capsules", method="post", enctype="multipart/form-data")
     textarea(name="content", rows="5", placeholder="Dawno, dawno temu..." required)
 
     div

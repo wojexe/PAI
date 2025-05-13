@@ -14,6 +14,6 @@ block content
         if notYetAvailabe
           li 🔒 Kapsuła #{capsule.id}
         else
-          li: a(href=`/capsules/${capsule.id}`) Kapsuła #{capsule.id}
+          li: a(href=baseUrl + `/capsules/${capsule.id}`) Kapsuła #{capsule.id}
 
-  a(href="/capsules/new") Stwórz własną kapsułę
+  a(href=baseUrl + "/capsules/new") Stwórz własną kapsułę

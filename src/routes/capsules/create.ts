@@ -82,7 +82,7 @@ export const postHandler: RequestHandler = async (req, res) => {
     return capsule.id;
   });
 
-  res.redirect(`/capsules/${capsuleId}`);
+  res.redirect(`${Config.BASE_PATH}/capsules/${capsuleId}`);
 };
 
 // Multer setup

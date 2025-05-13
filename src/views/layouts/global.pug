@@ -6,14 +6,14 @@ html
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-    link(rel='stylesheet' href='/css/stylesheet.css' media='screen')
+    link(rel='stylesheet' href=baseUrl + '/css/stylesheet.css' media='screen')
     link(rel='stylesheet' href='https://unpkg.com/sakura.css/css/sakura.css' media='screen')
     link(rel='stylesheet' href='https://unpkg.com/sakura.css/css/sakura-dark.css' media='screen and (prefers-color-scheme: dark)')
 
   body
     header
       nav
-        a(href="/") strona główna
-        a(href="/capsules") kapsuły
+        a(href=baseUrl + "/") strona główna
+        a(href=baseUrl + "/capsules") kapsuły
 
     block content

@@ -9,7 +9,7 @@ mixin capsuleContent
 
   if files.length > 0
     each file in files
-      - var resourceUrl = `/${capsule.folderName}/${file.fileName}`
+      - var resourceUrl = `${baseUrl}/${capsule.folderName}/${file.fileName}`
       if file.contentType === "image"
         img(src=resourceUrl)
       else if file.contentType === "video"

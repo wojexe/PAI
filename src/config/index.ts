@@ -24,6 +24,7 @@ const configSchema = v.looseObject({
       "Capsules folder does not exist"
     )
   ),
+  BASE_PATH: v.string(),
 });
 
 export type Config = v.InferOutput<typeof configSchema>;
