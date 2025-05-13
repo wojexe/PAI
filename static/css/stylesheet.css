@@ -31,3 +31,23 @@ nav {
   display: flex;
   gap: 1em;
 }
+
+a.underline_disabled {
+  &::after {
+    display: none;
+  }
+}
+
+ul.capsule_list {
+  list-style: capsules;
+}
+
+@counter-style capsules {
+  system: cyclic;
+  symbols: 🔮;
+  suffix: "";
+}
+
+audio {
+  width: 100%
+}

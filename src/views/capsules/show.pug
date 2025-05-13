@@ -1,6 +1,35 @@
 extends ../layouts/global.pug
 
-block content
-    h1= message
+mixin notYetAvailable
+  blockquote Kapsuła nie została jeszcze opublikowana
 
-    p Interesting content...
+mixin capsuleContent
+  h2 Zawartość
+  p= capsule.content
+
+  if files.length > 0
+    each file in files
+      - var resourceUrl = `/${capsule.folderName}/${file.fileName}`
+      if file.contentType === "image"
+        img(src=resourceUrl)
+      else if file.contentType === "video"
+        video(controls)
+          source(src=resourceUrl)
+      else if file.contentType === "audio"
+        audio(controls src=resourceUrl style="width: 100%")
+      else
+        a(href=resourceUrl) Pobierz plik
+
+block content
+  - var publishDate = new Date(capsule.publishDate)
+  - var notYetAvailabe = publishDate > new Date()
+
+  h1= `🔮${notYetAvailabe ? '🔒' : ''} ${title}`
+
+  if notYetAvailabe
+    +notYetAvailable
+  else
+    +capsuleContent
+
+  h2 Data publikacji
+  p= Intl.DateTimeFormat("pl", { dateStyle: "full", timeStyle: "short" }).format(publishDate)

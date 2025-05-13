@@ -1,6 +1,12 @@
 extends layouts/global.pug
 
 block content
-    h1= message
+  h1 Kapsuły czasowe 🔮
+  hr/
+  center: img(src="/images/time_capsule.png" width=200 style="border-radius: 16px; margin-bottom: 0;")
+  p.
+    Trafiłeś do #[strong przechowalni kapsuł czasowych] - miejscu, gdzie możesz wysyłać wiadomości do przyszłości.
+    Napisz notatkę do przyszłego siebie, zachowaj wspomnienie lub zostaw niespodziankę dla kogoś wyjątkowego.
+    Ustaw datę, zamknij wiadomość i gdy nadejdzie czas, zostanie ona ujawniona. Proste, bezpieczne i ponadczasowe — zacznij zachowywać swoje chwile już dziś.
 
-    a(href="/capsules") Show all capsules
+  ul.capsule_list: li: a(href="/capsules") Wyświetl listę kapsuł

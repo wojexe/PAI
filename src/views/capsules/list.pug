@@ -1,8 +1,19 @@
 extends ../layouts/global.pug
 
 block content
-    h1= message
+  h1 #{title} 🔮
 
-    ul
-      li: a(href="/capsules/1") Capsule 1
-      li: a(href="/capsules/2") Capsule 2
+  if capsules.length === 0
+    blockquote Nie ma obecnie żanych kapsuł
+  else
+    ul.capsule_list
+      each capsule in capsules
+        - var publishDate = new Date(capsule.publishDate)
+        - var notYetAvailabe = publishDate > new Date()
+
+        if notYetAvailabe
+          li 🔒 Kapsuła #{capsule.id}
+        else
+          li: a(href=`/capsules/${capsule.id}`) Kapsuła #{capsule.id}
+
+  a(href="/capsules/new") Stwórz własną kapsułę

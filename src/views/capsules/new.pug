@@ -1,0 +1,55 @@
+extends ../layouts/global.pug
+
+block content
+  h1 Nowa kapsuła 🔮
+
+  form(action="/capsules", method="post", enctype="multipart/form-data")
+    textarea(name="content", rows="5", placeholder="Dawno, dawno temu..." required)
+
+    div
+      label(for="attachments"): small Możesz załączyć zdjęcie, film, lub plik audio (maksymalnie 4 pliki)
+      input#attachments(
+        type="file", name="attachments",
+        accept="audio/*,image/*,video/*", multiple,
+        style="width: 100%;"
+      )
+
+    div(style="float: right")
+      input#publishDate(type="datetime-local", name="publish_date", required)
+      button(type="submit", style="margin-left: 16px;") Zapieczętuj kapsułę
+
+  script.
+    const input = document.getElementById('publishDate');
+    const now = new Date();
+    now.setSeconds(0, 0); // Remove seconds and ms for compatibility
+
+    // Pad helper
+    const pad = n => n.toString().padStart(2, '0');
+
+    // Format as "YYYY-MM-DDTHH:mm" in local time
+    const local = [
+      now.getFullYear(),
+      pad(now.getMonth() + 1),
+      pad(now.getDate())
+    ].join('-') + 'T' +
+      [pad(now.getHours()), pad(now.getMinutes())].join(':');
+
+    input.min = local;
+    input.value = local;
+
+  script.
+    document.getElementById('attachments').addEventListener('change', function(e) {
+      const maxCount = 4
+      const maxSize = 32 * 1024 * 1024; // 32MB
+
+      if (e.target.files.length > maxCount) {
+        alert(`Wybrano zbyt wiele plików (maksymalnie 4)`);
+        e.target.value = '';
+      }
+
+      if ([...e.target.files].some(file => file.size > maxSize)) {
+          alert(`Zbyt duży rozmiar jednego z plików (maksymalnie 32MB)`);
+          e.target.value = '';
+      }
+    });
+

@@ -1,4 +1,8 @@
 .env
 
+sqlite.db
+/capsules/
+
+.drizzle/
 node_modules/
 build/
